@@ -103,7 +103,7 @@ public class VintedRepository {
     }
     //acquisto
     public boolean createAcquisto(AcquistoModel a){
-        int rowAffected = db_vinted.update("insert into vinted.acquisto(id,id_acquirente,id_articolo,data_acquisto,madalita_spedizione, data_spedizione) " +
+        int rowAffected = db_vinted.update("insert into vinted.acquisto(id,id_acquirente,id_articolo,data_acquisto,modalita_spedizione, data_spedizione) " +
                         "values (?,?,?,?,?,?)",
                 a.getId(),a.getId_acquirente(),a.getId_articolo(), a.getData_acquisto(), a.getMode_spedizione(),a.getData_spedizione());
         return rowAffected>0;
