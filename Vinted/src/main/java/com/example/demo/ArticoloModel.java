@@ -4,19 +4,18 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class ArticoloModel {
-    private String id, nome, descrizione, id_venditore, condizioni, luogo, id_categoria;
+    private String id, nome, descrizione, id_venditore, condizioni, luogo;
     private double prezzo;
     private boolean in_vendita;
     private LocalDate data_pubblicazione;
 
-    public ArticoloModel(String id, String nome, String descrizione, String id_venditore, String condizioni, String luogo, String id_categoria, double prezzo, LocalDate data_pubblicazione) {
+    public ArticoloModel(String id, String nome, String descrizione, String id_venditore, String condizioni, String luogo, double prezzo, LocalDate data_pubblicazione) {
         this.id = id;
         this.nome = nome;
         this.descrizione = descrizione;
         this.id_venditore = id_venditore;
         this.condizioni = condizioni;
         this.luogo = luogo;
-        this.id_categoria = id_categoria;
         this.prezzo = prezzo;
         this.data_pubblicazione = data_pubblicazione;
     }
@@ -93,14 +92,6 @@ public class ArticoloModel {
         this.data_pubblicazione = data_pubblicazione;
     }
 
-    public String getId_categoria() {
-        return id_categoria;
-    }
-
-    public void setId_categoria(String id_categoria) {
-        this.id_categoria = id_categoria;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -123,7 +114,6 @@ public class ArticoloModel {
                 ", id_venditore='" + id_venditore + '\'' +
                 ", condizioni='" + condizioni + '\'' +
                 ", luogo='" + luogo + '\'' +
-                ", id_categoria='" + id_categoria + '\'' +
                 ", prezzo=" + prezzo +
                 ", stato=" + (in_vendita==true ? "IN VENDITA" : "VENDUTO") +
                 ", data_pubblicazione=" + data_pubblicazione +
