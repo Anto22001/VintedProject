@@ -44,4 +44,20 @@ public class VintedService {
     public List<CategoriaModel> getCategorie(){
         return this.vintedRepo.getCategorie();
     }
+
+    //recensione
+    public boolean createRecensione(RecensioneUtenteModel r){
+        return this.vintedRepo.createRecensione(r);
+    }
+
+    public boolean removeRecensione(String id){
+        return this.vintedRepo.removeRecensione(id);
+    }
+
+    public boolean updateRecensione(RecensioneUtenteModel r){
+        return this.vintedRepo.updateRecensione(r);
+    }
+    public List<RecensioneUtenteModel> getRecensione(){
+        return this.vintedRepo.getRecensioni();
+    }
 }
