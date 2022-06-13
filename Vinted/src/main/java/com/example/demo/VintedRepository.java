@@ -101,6 +101,62 @@ public class VintedRepository {
                         )
         );
     }
+    //acquisto
+    public boolean createAcquisto(AcquistoModel a){
+        int rowAffected = db_vinted.update("insert into vinted.acquisto(id,id_acquirente,id_articolo,data_acquisto,madalita_spedizione, data_spedizione) " +
+                        "values (?,?,?,?,?,?)",
+                a.getId(),a.getId_acquirente(),a.getId_articolo(), a.getData_acquisto(), a.getMode_spedizione(),a.getData_spedizione());
+        return rowAffected>0;
+    }
+
+    public boolean removeAcquisto(String id){
+        int rowAffected = db_vinted.update("delete from vinted.acquisto where id=?",id);
+        return rowAffected>0;
+    }
+
+
+    public List<AcquistoModel> getAcquisti(){
+        return this.db_vinted.query("select * from vinted.acquisto ORDER BY data_acquisto;",
+                (rs, rowNum) ->
+                        new AcquistoModel(
+                                rs.getString("id"),
+                                rs.getString("id_acquirente"),
+                                rs.getString("id_articolo"),
+                                rs.getString("modalita_spedizione"),
+                                rs.getDate("data_acquisto").toLocalDate(),
+                                rs.getDate("data_spedizione").toLocalDate()
+                        )
+        );
+    }
+    //Wishlist
+    public boolean createWishlist(WishListModel w){
+        int rowAffected = db_vinted.update("insert into vinted.wishlist(id,id_utente,nome) " +
+                        "values (?,?,?)",
+               w.getId(),w.getId_utente(), w.getNome() );
+        return rowAffected>0;
+    }
+
+    public boolean removeWishlist(String id){
+        int rowAffected = db_vinted.update("delete from vinted.wishlist where id=?",id);
+        return rowAffected>0;
+    }
+
+    public boolean updateWishlist(WishListModel w){
+        int rowAffected = db_vinted.update("update vinted.wishlist set nome=?",
+                w.getNome());
+        return rowAffected>0;
+    }
+
+    public List<WishListModel> getWishlist(){
+        return this.db_vinted.query("select * from vinted.wishlist",
+                (rs, rowNum) ->
+                        new WishListModel(
+                                rs.getString("id"),
+                                rs.getString("id_utente"),
+                                rs.getString("nome")
+                        )
+        );
+    }
 
     //articolo
     public boolean createArticolo(ArticoloModel a){

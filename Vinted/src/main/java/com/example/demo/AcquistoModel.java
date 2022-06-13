@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class AcquistoModel {
     private String id, id_acquirente, id_articolo;
-    private ModeSpedizione mode_spedizione;
+    private String mode_spedizione;
     private LocalDate data_acquisto, data_spedizione;
 
-    public AcquistoModel(String id, String id_acquirente, String id_articolo, ModeSpedizione mode_spedizione, LocalDate data_acquisto, LocalDate data_spedizione) {
+    public AcquistoModel(String id, String id_acquirente, String id_articolo, String mode_spedizione, LocalDate data_acquisto, LocalDate data_spedizione) {
         this.id = id;
         this.id_acquirente = id_acquirente;
         this.id_articolo = id_articolo;
@@ -43,11 +43,11 @@ public class AcquistoModel {
         this.id_articolo = id_articolo;
     }
 
-    public ModeSpedizione getMode_spedizione() {
+    public String getMode_spedizione() {
         return mode_spedizione;
     }
 
-    public void setMode_spedizione(ModeSpedizione mode_spedizione) {
+    public void setMode_spedizione(String mode_spedizione) {
         this.mode_spedizione = mode_spedizione;
     }
 
@@ -86,7 +86,7 @@ public class AcquistoModel {
                 "id='" + id + '\'' +
                 ", id_acquirente='" + id_acquirente + '\'' +
                 ", id_articolo='" + id_articolo + '\'' +
-                ", mode_spedizione=" + (mode_spedizione==ModeSpedizione.SPEDITO ? "CON SPEDIZIONE" : "SENZA SPEDIZIONE") +
+                ", mode_spedizione=" + mode_spedizione +
                 ", data_acquisto=" + data_acquisto +
                 ", data_spedizione=" + data_spedizione +
                 '}';
