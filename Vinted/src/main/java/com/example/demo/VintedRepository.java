@@ -102,6 +102,39 @@ public class VintedRepository {
         );
     }
 
+    //articolo
+    public boolean createArticolo(ArticoloModel a){
+        int rowAffected = db_vinted.update("insert into vinted.articolo(id,nome,descrizione,id_venditore,condizioni,data,luogo,prezzo) " +
+                        "values (?,?,?,?,?,?,?,))",
+                a.getId(),a.getNome(),a.getDescrizione(),a.getId_venditore(),a.getCondizioni(),a.getData_pubblicazione(),a.getLuogo(),a.getLuogo());
+        return rowAffected>0;
+    }
+
+    public boolean removeArticolo(String id){
+        int rowAffected = db_vinted.update("update vinted.articolo set in_vendita=false where id=?",id);
+        return rowAffected>0;
+    }
+
+    public boolean updateArticolo(ArticoloModel a){
+        int rowAffected = db_vinted.update("update vinted.articolo set nome=?,descrizione=?,id_venditore=?,condizioni=?,data=?,luogo=?,prezzo=? where id=?",
+                a.getNome(),a.getDescrizione(),a.getId_venditore(),a.getCondizioni(),a.getData_pubblicazione(),a.getLuogo(),a.getPrezzo(),a.getId());
+        return rowAffected>0;
+    }
+
+    public List<ArticoloModel> getArticoli(){
+        return this.db_vinted.query("select * from vinted.articolo ORDER BY data_pubblicazione;",
+                (rs, rowNum) ->
+                        new ArticoloModel(
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("descrizione"),
+                                rs.getString("id_venditore"),
+                                rs.getString("condizioni"),
+                                rs.getString("luogo"),
+                                rs.getDouble("prezzo"),
+                                rs.getDate("data_pubblicazione").toLocalDate()
+        ));
+    }
 
 
 
