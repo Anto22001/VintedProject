@@ -65,4 +65,28 @@ public class VintedController {
         List<CategoriaModel> ris = this.vintedService.getCategorie();
         return ResponseEntity.status(HttpStatus.OK).body(ris);
     }
+
+    @PostMapping("/creaRecensione")
+    public ResponseEntity<Void> createReview(@RequestBody RecensioneUtenteModel r){
+        boolean creato = this.vintedService.createRecensione(r);
+        return creato ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    @DeleteMapping("/cancellaRecensione")
+    public ResponseEntity<Void> removeReview(@RequestParam String id){
+        boolean rimosso = this.vintedService.removeRecensione(id);
+        return rimosso ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    @PutMapping("/modificaRecensione")
+    public ResponseEntity<Void> updateReview(@RequestBody RecensioneUtenteModel r){
+        boolean updated = this.vintedService.updateRecensione(r);
+        return updated ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    @GetMapping("/getRecensioni")
+    public ResponseEntity<List<RecensioneUtenteModel>> getRecensioni(){
+        List<RecensioneUtenteModel> ris = this.vintedService.getRecensione();
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
 }
