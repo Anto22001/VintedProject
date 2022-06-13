@@ -69,7 +69,6 @@ public class VintedRepository {
     }
 
     //recensione
-    //categoria
     public boolean createRecensione(RecensioneUtenteModel r){
         int rowAffected = db_vinted.update("insert into vinted.recensione(id,id_recensore,id_recensito,titolo,testo,valutazione,data_pubblicazione) " +
                         "values (?,?,?,?,?,?,?)",
