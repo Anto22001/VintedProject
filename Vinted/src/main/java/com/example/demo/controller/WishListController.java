@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.UtenteModel;
 import com.example.demo.model.WishListModel;
 import com.example.demo.service.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;

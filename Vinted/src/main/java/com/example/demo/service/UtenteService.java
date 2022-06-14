@@ -30,4 +30,6 @@ public class UtenteService {
     public List<UtenteModel> getUtenti(){
         return this.utenteRepo.getUtenti();
     }
+
+    public List<UtenteModel> getUtente(String id_utente){ return this.utenteRepo.getUtente(id_utente);   }
 }

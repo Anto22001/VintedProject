@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.CategoriaModel;
-import com.example.demo.model.RecensioneUtenteModel;
 import com.example.demo.model.UtenteModel;
 import com.example.demo.service.UtenteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +39,12 @@ public class UtenteController {
     @GetMapping("/getUtenti")
     public ResponseEntity<List<UtenteModel>> getUtenti(){
         List<UtenteModel> ris = this.utenteService.getUtenti();
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
+
+    @GetMapping("/getUtenteId")
+    public ResponseEntity<List<UtenteModel>> getUtenteId(@RequestParam String id){
+        List<UtenteModel> ris = this.utenteService.getUtente(id);
         return ResponseEntity.status(HttpStatus.OK).body(ris);
     }
 }

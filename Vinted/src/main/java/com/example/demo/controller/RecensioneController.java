@@ -42,4 +42,10 @@ public class RecensioneController {
         List<RecensioneUtenteModel> ris = this.recensioneServ.getRecensione();
         return ResponseEntity.status(HttpStatus.OK).body(ris);
     }
+
+    @GetMapping("/getValutazioneMedia")
+    public ResponseEntity<List<Double>> getValutazioneMedia(@RequestParam String id_utente){
+        List<Double> ris = this.recensioneServ.valutazioneMedia(id_utente);
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
 }

@@ -37,8 +37,23 @@ public class UtenteRepository {
                         rs.getString("nome"),
                         rs.getString("cognome"),
                         rs.getDate("data_nascita").toLocalDate(),
-                        rs.getString("citta")
+                        rs.getString("citta"),
+                        rs.getDouble("valutazione_media")
                 )
+        );
+    }
+
+    public List<UtenteModel> getUtente(String id_utente){
+        return this.db_vinted.query("select * from vinted.utente where id=?;",
+                (rs, rowNum) ->
+                        new UtenteModel(
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("cognome"),
+                                rs.getDate("data_nascita").toLocalDate(),
+                                rs.getString("citta"),
+                                rs.getDouble("valutazione_media")
+                        ),id_utente
         );
     }
 

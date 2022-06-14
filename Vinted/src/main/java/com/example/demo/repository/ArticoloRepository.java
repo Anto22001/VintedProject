@@ -43,4 +43,19 @@ public class ArticoloRepository {
                                 rs.getDouble("prezzo")
                         ));
     }
+
+    public List<ArticoloModel> getArticoliUtente(String id_utente){
+        return this.db_vinted.query("select * from articolo where id_venditore=? and in_vendita=true ORDER BY data_pubblicazione",
+                (rs, rowNum) ->
+                        new ArticoloModel(
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("descrizione"),
+                                rs.getString("id_venditore"),
+                                rs.getString("condizioni"),
+                                rs.getString("luogo"),
+                                rs.getDouble("prezzo")
+                        ),id_utente
+        );
+    }
 }

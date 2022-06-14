@@ -25,7 +25,6 @@ public class AcquistoRepository {
         return rowAffected>0;
     }
 
-
     public List<AcquistoModel> getAcquisti(){
         return this.db_vinted.query("select * from vinted.acquisto ORDER BY data_acquisto;",
                 (rs, rowNum) ->
@@ -36,6 +35,19 @@ public class AcquistoRepository {
                                 rs.getString("modalita_spedizione"),
                                 rs.getDate("data_spedizione").toLocalDate()
                         )
+        );
+    }
+
+    public List<AcquistoModel> getAcquistiUtente(String id_utente){
+        return this.db_vinted.query("select * from acquisto where id=? ORDER BY data_acquisto;",
+                (rs, rowNum) ->
+                        new AcquistoModel(
+                                rs.getString("id"),
+                                rs.getString("id_acquirente"),
+                                rs.getString("id_articolo"),
+                                rs.getString("modalita_spedizione"),
+                                rs.getDate("data_spedizione").toLocalDate()
+                        ),id_utente
         );
     }
 }

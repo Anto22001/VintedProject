@@ -1,18 +1,29 @@
 package com.example.demo.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class UtenteModel {
     private String id, nome, cognome, citta;
     private LocalDate data_nascita;
+    private double val_media;
 
-    public UtenteModel(String id, String nome, String cognome, LocalDate data_nascita, String citta) {
+    public UtenteModel(String id, String nome, String cognome, LocalDate data_nascita, String citta, double val) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
         this.data_nascita = data_nascita;
         this.citta = citta;
+        this.val_media=val>0 ? val : 0;
+    }
+
+    public double getVal_media() {
+        return val_media;
+    }
+
+    public void setVal_media(double val_media) {
+        this.val_media = val_media;
     }
 
     /*public UtenteModel(String nome, String cognome, LocalDate data_nascita, String citta) {
