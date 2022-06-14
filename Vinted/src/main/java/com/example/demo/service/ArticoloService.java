@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.ArticoloModel;
 import com.example.demo.model.RecensioneUtenteModel;
+import com.example.demo.model.UtenteModel;
 import com.example.demo.repository.ArticoloRepository;
 import com.example.demo.repository.RecensioneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,6 @@ public class ArticoloService {
     public List<ArticoloModel> getArticolo(){
         return this.articoloRepo.getArticoli();
     }
+
+    public double getGuadagno(String u){ return this.articoloRepo.getGuadagno(u); }
 }

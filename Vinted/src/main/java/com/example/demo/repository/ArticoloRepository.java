@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.ArticoloModel;
+import com.example.demo.model.UtenteModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -57,5 +58,11 @@ public class ArticoloRepository {
                                 rs.getDouble("prezzo")
                         ),id_utente
         );
+    }
+
+    public double getGuadagno(String u){
+        List<Double> var = this.db_vinted.query("select sum(prezzo) as p from vinted.acquisto, vinted.articolo where acquisto.id_articolo=articolo.id and id_venditore=?",
+                (rs, rowNum) ->rs.getDouble("p"),u);
+        return var.get(0);
     }
 }

@@ -28,8 +28,7 @@ public class ArticoloWishListRepository {
         return rowAffected>0;
     }
 
-    public boolean removeArticoloFromEveryWishlists(ArticoloModel a){
-        int rowAffected = db_vinted.update("delete * from vinted.articolo_wishlist where id_articolo=?", a.getId());
-        return rowAffected>0;
+    public void removeArticoloFromEveryWishlists(ArticoloModel a){
+       db_vinted.update("delete from vinted.articolo_wishlist where id_articolo=?", a.getId());
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.ArticoloModel;
+import com.example.demo.model.UtenteModel;
 import com.example.demo.service.ArticoloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,12 @@ public class ArticoloController {
     @GetMapping("/getArticoli")
     public ResponseEntity<List<ArticoloModel>> getArticolo(){
         List<ArticoloModel> ris = this.articoloServ.getArticolo();
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
+
+    @GetMapping("/getGuadagno")
+    public ResponseEntity<Double> getGuadagno(@RequestParam String id_utente){
+        Double ris = this.articoloServ.getGuadagno(id_utente);
         return ResponseEntity.status(HttpStatus.OK).body(ris);
     }
 }
