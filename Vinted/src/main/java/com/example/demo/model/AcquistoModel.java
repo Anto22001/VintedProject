@@ -1,6 +1,4 @@
-package com.example.demo;
-
-import org.springframework.boot.Banner;
+package com.example.demo.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -10,12 +8,12 @@ public class AcquistoModel {
     private String mode_spedizione;
     private LocalDate data_acquisto, data_spedizione;
 
-    public AcquistoModel(String id, String id_acquirente, String id_articolo, String mode_spedizione, LocalDate data_acquisto, LocalDate data_spedizione) {
+    public AcquistoModel(String id, String id_acquirente, String id_articolo, String mode_spedizione, LocalDate data_spedizione) {
         this.id = id;
         this.id_acquirente = id_acquirente;
         this.id_articolo = id_articolo;
         this.mode_spedizione = mode_spedizione;
-        this.data_acquisto = data_acquisto;
+        this.data_acquisto = LocalDate.now();
         this.data_spedizione = data_spedizione;
     }
 

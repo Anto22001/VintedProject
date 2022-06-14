@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -9,7 +9,7 @@ public class ArticoloModel {
     private boolean in_vendita;
     private LocalDate data_pubblicazione;
 
-    public ArticoloModel(String id, String nome, String descrizione, String id_venditore, String condizioni, String luogo, double prezzo, LocalDate data_pubblicazione) {
+    public ArticoloModel(String id, String nome, String descrizione, String id_venditore, String condizioni, String luogo, double prezzo) {
         this.id = id;
         this.nome = nome;
         this.descrizione = descrizione;
@@ -17,7 +17,7 @@ public class ArticoloModel {
         this.condizioni = condizioni;
         this.luogo = luogo;
         this.prezzo = prezzo;
-        this.data_pubblicazione = data_pubblicazione;
+        this.data_pubblicazione = LocalDate.now();
     }
 
     public String getId() {
