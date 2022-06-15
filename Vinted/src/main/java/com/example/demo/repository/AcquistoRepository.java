@@ -50,4 +50,18 @@ public class AcquistoRepository {
                         ),id_utente
         );
     }
+
+    public List<AcquistoModel> getAcquistiRangeTempo(int range){
+        return this.db_vinted.query("SELECT * FROM vinted.acquisto WHERE data_acquisto >=date_trunc('day', NOW() - ?::interval) AND data_acquisto <= now();",
+                (rs, rowNum) ->
+                        new AcquistoModel(
+                                rs.getString("id"),
+                                rs.getString("id_acquirente"),
+                                rs.getString("id_articolo"),
+                                rs.getString("modalita_spedizione"),
+                                rs.getDate("data_spedizione").toLocalDate()
+                        ),
+                "'" + range + " months'"
+        );
+    }
 }

@@ -32,8 +32,20 @@ public class AcquistoController {
     }
 
     @GetMapping("/getAcquisti")
-    public ResponseEntity<List<AcquistoModel>> getArticolo(){
+    public ResponseEntity<List<AcquistoModel>> getAcquisto(){
         List<AcquistoModel> ris = this.acquistoServ.getAcquisti();
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
+
+    @GetMapping("/getAcquistiUtente")
+    public ResponseEntity<List<AcquistoModel>> getAcquistoUtente(@RequestParam String id_utente){
+        List<AcquistoModel> ris = this.acquistoServ.getAcquistiUtente(id_utente);
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
+
+    @GetMapping("/getAcquistiRangeTempo")
+    public ResponseEntity<List<AcquistoModel>> getAcquistoRangeTempo(@RequestParam int range){
+        List<AcquistoModel> ris = this.acquistoServ.getAcquistiRangeTempo(range);
         return ResponseEntity.status(HttpStatus.OK).body(ris);
     }
 }

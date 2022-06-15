@@ -39,8 +39,10 @@ public class CategoriaArticoloRepository {
                                 rs.getString("descrizione"),
                                 rs.getString("id_venditore"),
                                 rs.getString("condizioni"),
+                                rs.getDate("data_pubblicazione").toLocalDate(),
                                 rs.getString("luogo"),
-                                rs.getDouble("prezzo")
+                                rs.getDouble("prezzo"),
+                                rs.getBoolean("in_vendita")
                         ),c.getId()
         );
     }

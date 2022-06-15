@@ -34,5 +34,9 @@ public class ArticoloService {
         return this.articoloRepo.getArticoli();
     }
 
+    public List<ArticoloModel> articoliVenduti(String id_u){
+        return this.articoloRepo.articoliVenduti(id_u);
+    }
+
     public double getGuadagno(String u){ return this.articoloRepo.getGuadagno(u); }
 }

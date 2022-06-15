@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.ArticoloModel;
-import com.example.demo.model.UtenteModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -40,8 +39,10 @@ public class ArticoloRepository {
                                 rs.getString("descrizione"),
                                 rs.getString("id_venditore"),
                                 rs.getString("condizioni"),
+                                rs.getDate("data_pubblicazione").toLocalDate(),
                                 rs.getString("luogo"),
-                                rs.getDouble("prezzo")
+                                rs.getDouble("prezzo"),
+                                rs.getBoolean("in_vendita")
                         ));
     }
 
@@ -54,8 +55,10 @@ public class ArticoloRepository {
                                 rs.getString("descrizione"),
                                 rs.getString("id_venditore"),
                                 rs.getString("condizioni"),
+                                rs.getDate("data_pubblicazione").toLocalDate(),
                                 rs.getString("luogo"),
-                                rs.getDouble("prezzo")
+                                rs.getDouble("prezzo"),
+                                rs.getBoolean("in_vendita")
                         ),id_utente
         );
     }
@@ -64,5 +67,21 @@ public class ArticoloRepository {
         List<Double> var = this.db_vinted.query("select sum(prezzo) as p from vinted.acquisto, vinted.articolo where acquisto.id_articolo=articolo.id and id_venditore=?",
                 (rs, rowNum) ->rs.getDouble("p"),u);
         return var.get(0);
+    }
+
+    public List<ArticoloModel> articoliVenduti(String id_venditore){
+        return this.db_vinted.query("select * from vinted.articolo where id_venditore=? and in_vendita=false",
+                (rs,rowNum)->new ArticoloModel(
+                        rs.getString("id"),
+                        rs.getString("nome"),
+                        rs.getString("descrizione"),
+                        rs.getString("id_venditore"),
+                        rs.getString("condizioni"),
+                        rs.getDate("data_pubblicazione").toLocalDate(),
+                        rs.getString("luogo"),
+                        rs.getDouble("prezzo"),
+                        rs.getBoolean("in_vendita")
+                ),id_venditore
+        );
     }
 }

@@ -18,7 +18,22 @@ public class ArticoloModel {
         this.luogo = luogo;
         this.prezzo = prezzo;
         this.data_pubblicazione = LocalDate.now();
+        this.in_vendita=true;
     }
+
+    public ArticoloModel(String id, String nome, String descrizione, String id_venditore, String condizioni, LocalDate data_p, String luogo, double prezzo, boolean in_vendita) {
+        this.id = id;
+        this.nome = nome;
+        this.descrizione = descrizione;
+        this.id_venditore = id_venditore;
+        this.condizioni = condizioni;
+        this.luogo = luogo;
+        this.prezzo = prezzo;
+        this.data_pubblicazione = data_p;
+        this.in_vendita=in_vendita;
+    }
+
+
 
     public String getId() {
         return id;

@@ -44,6 +44,12 @@ public class ArticoloController {
         return ResponseEntity.status(HttpStatus.OK).body(ris);
     }
 
+    @GetMapping("/getArticoliVenduti")
+    public ResponseEntity<List<ArticoloModel>> getArticoliVenduti(@RequestParam String id_venditore){
+        List<ArticoloModel> ris = this.articoloServ.articoliVenduti(id_venditore);
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
+
     @GetMapping("/getGuadagno")
     public ResponseEntity<Double> getGuadagno(@RequestParam String id_utente){
         Double ris = this.articoloServ.getGuadagno(id_utente);
