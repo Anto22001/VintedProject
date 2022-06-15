@@ -25,8 +25,8 @@ public class ArticoloRepository {
     }
 
     public boolean updateArticolo(ArticoloModel a){
-        int rowAffected = db_vinted.update("update vinted.articolo set nome=?,descrizione=?,id_venditore=?,condizioni=?,data=?,luogo=?,prezzo=? where id=?",
-                a.getNome(),a.getDescrizione(),a.getId_venditore(),a.getCondizioni(),a.getData_pubblicazione(),a.getLuogo(),a.getPrezzo(),a.getId());
+        int rowAffected = db_vinted.update("update vinted.articolo set nome=?,descrizione=?,id_venditore=?,condizioni=?,data_pubblicazione=?,luogo=?,prezzo=?,in_vendita=? where id=?",
+                a.getNome(),a.getDescrizione(),a.getId_venditore(),a.getCondizioni(),a.getData_pubblicazione(),a.getLuogo(),a.getPrezzo(),a.isIn_vendita(),a.getId());
         return rowAffected>0;
     }
 

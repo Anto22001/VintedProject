@@ -9,15 +9,8 @@ public class ArticoloModel {
     private boolean in_vendita;
     private LocalDate data_pubblicazione;
 
-    public ArticoloModel(String id, String nome, String descrizione, String id_venditore, String condizioni, String luogo, double prezzo) {
-        this.id = id;
-        this.nome = nome;
-        this.descrizione = descrizione;
-        this.id_venditore = id_venditore;
-        this.condizioni = condizioni;
-        this.luogo = luogo;
-        this.prezzo = prezzo;
-        this.data_pubblicazione = LocalDate.now();
+    public ArticoloModel() {
+        this.data_pubblicazione=LocalDate.now();
         this.in_vendita=true;
     }
 
