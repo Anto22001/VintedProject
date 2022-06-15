@@ -20,7 +20,9 @@ public class RecensioneService {
     }
 
     public boolean createRecensione(RecensioneUtenteModel r){
-        return this.rensioneRepo.createRecensione(r);
+        if(r.getValutazione()>=0 && r.getValutazione()<6)
+            return this.rensioneRepo.createRecensione(r);
+        return false;
     }
 
     public boolean removeRecensione(String id){

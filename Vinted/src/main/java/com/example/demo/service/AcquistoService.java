@@ -27,7 +27,7 @@ public class AcquistoService {
 
     public boolean createAcquisto(AcquistoModel ac){
         for(ArticoloModel a : this.articoloRepo.getArticoli()) {
-            if (a.getId().equals(ac.getId_articolo()) && a.isIn_vendita()) {
+            if (a.getId().equals(ac.getId_articolo()) && !a.getId_venditore().equals(ac.getId_acquirente()) && a.isIn_vendita()) {
                 if (ac.getData_acquisto().compareTo(a.getData_pubblicazione()) >= 0 && ac.getData_acquisto().compareTo(ac.getData_spedizione()) <= 0) {
                     a.setIn_vendita(false);
                     this.articoloRepo.updateArticolo(a);

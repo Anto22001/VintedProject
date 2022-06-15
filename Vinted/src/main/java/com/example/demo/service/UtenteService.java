@@ -5,6 +5,7 @@ import com.example.demo.repository.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -17,7 +18,9 @@ public class UtenteService {
 
     //utente
     public boolean createUser(UtenteModel u){
-        return this.utenteRepo.createUser(u);
+        if(LocalDate.now().getYear()-u.getData_nascita().getYear()>=16)
+            return this.utenteRepo.createUser(u);
+        return false;
     }
 
     public boolean removeUser(String id){
