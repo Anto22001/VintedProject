@@ -39,7 +39,8 @@ public class RecensioneRepository {
                                 rs.getString("id_recensito"),
                                 rs.getString("titolo"),
                                 rs.getString("testo"),
-                                rs.getInt("valutazione")
+                                rs.getInt("valutazione"),
+                                rs.getDate("data_pubblicazione").toLocalDate()
                         )
         );
     }

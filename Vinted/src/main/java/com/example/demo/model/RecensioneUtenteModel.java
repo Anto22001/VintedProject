@@ -8,14 +8,17 @@ public class RecensioneUtenteModel {
     private int valutazione;
     private LocalDate data_pubblicazione;
 
-    public RecensioneUtenteModel(String id, String id_recensore, String id_recensito, String titolo, String testo, int valutazione) {
+    public RecensioneUtenteModel(){
+        this.data_pubblicazione=LocalDate.now();
+    }
+    public RecensioneUtenteModel(String id, String id_recensore, String id_recensito, String titolo, String testo, int valutazione, LocalDate data_p) {
         this.id = id;
         this.id_recensore = id_recensore;
         this.id_recensito = id_recensito;
         this.titolo = titolo;
         this.testo = testo;
         this.valutazione = valutazione;
-        this.data_pubblicazione = LocalDate.now();
+        this.data_pubblicazione = data_p;
     }
 
     public String getId() {

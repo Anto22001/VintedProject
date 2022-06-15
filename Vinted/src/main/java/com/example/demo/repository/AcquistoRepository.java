@@ -33,6 +33,7 @@ public class AcquistoRepository {
                                 rs.getString("id_acquirente"),
                                 rs.getString("id_articolo"),
                                 rs.getString("modalita_spedizione"),
+                                rs.getDate("data_acquisto").toLocalDate(),
                                 rs.getDate("data_spedizione").toLocalDate()
                         )
         );
@@ -46,6 +47,7 @@ public class AcquistoRepository {
                                 rs.getString("id_acquirente"),
                                 rs.getString("id_articolo"),
                                 rs.getString("modalita_spedizione"),
+                                rs.getDate("data_acquisto").toLocalDate(),
                                 rs.getDate("data_spedizione").toLocalDate()
                         ),id_utente
         );
@@ -59,6 +61,7 @@ public class AcquistoRepository {
                                 rs.getString("id_acquirente"),
                                 rs.getString("id_articolo"),
                                 rs.getString("modalita_spedizione"),
+                                rs.getDate("data_acquisto").toLocalDate(),
                                 rs.getDate("data_spedizione").toLocalDate()
                         ),
                 "'" + range + " months'"
