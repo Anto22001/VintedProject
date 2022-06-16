@@ -41,4 +41,15 @@ public class WishListRepository {
                 ,id_utente
         );
     }
+
+    public List<WishListModel> getAllWishlists(){
+        return this.db_vinted.query("select * from vinted.wishlist",
+                (rs, rowNum) ->
+                        new WishListModel(
+                                rs.getString("id"),
+                                rs.getString("nome"),
+                                rs.getString("id_utente")
+                        )
+        );
+    }
 }

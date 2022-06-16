@@ -31,6 +31,12 @@ public class WishListController {
         return rimosso ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
+    @DeleteMapping("/compraArticoliWishList")
+    public ResponseEntity<Void> removeWishList(@RequestParam String[] id_articoli, String id_WishList){
+        boolean rimosso = this.wishListServ.acquistaArticoliWishList(id_articoli, id_WishList);
+        return rimosso ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
     @PutMapping("/modificaWishList")
     public ResponseEntity<Void> updateWishList(@RequestBody WishListModel w){
         boolean updated = this.wishListServ.updateWishList(w);
@@ -40,6 +46,12 @@ public class WishListController {
     @GetMapping("/getWishList")
     public ResponseEntity<List<WishListModel>> getWishList(@RequestParam String id_utente){
         List<WishListModel> ris = this.wishListServ.getWishList(id_utente);
+        return ResponseEntity.status(HttpStatus.OK).body(ris);
+    }
+
+    @GetMapping("/getAllWishLists")
+    public ResponseEntity<List<WishListModel>> getAllWishList(){
+        List<WishListModel> ris = this.wishListServ.getAllWishLists();
         return ResponseEntity.status(HttpStatus.OK).body(ris);
     }
 }

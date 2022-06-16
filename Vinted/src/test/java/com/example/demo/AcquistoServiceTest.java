@@ -19,11 +19,10 @@ public class AcquistoServiceTest {
     @Test
     public void testCreateAcquisto(){
         LocalDate ld= LocalDate.parse("2022-06-18");
-        AcquistoModel acq=new AcquistoModel("aabb","0002","1001","via cavo",LocalDate.parse("2022-06-15"),ld);
+        AcquistoModel acq=new AcquistoModel("0002","1001","via cavo",LocalDate.parse("2022-06-15"),ld);
         this.acquistoServ.createAcquisto(acq);
         this.db_vinted.query("select * from vinted.acquisto",
                 (rs,rowNum)->new AcquistoModel(
-                        rs.getString("id"),
                         rs.getString("id_acquirente"),
                         rs.getString("id_articolo"),
                         rs.getString("modalita_spedizione"),

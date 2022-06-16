@@ -4,15 +4,15 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class AcquistoModel {
-    private String id, id_acquirente, id_articolo;
+    private int id;
+    private String id_acquirente, id_articolo;
     private String mode_spedizione;
     private LocalDate data_acquisto, data_spedizione;
 
     public AcquistoModel(){
         this.data_acquisto=LocalDate.now();
     }
-    public AcquistoModel(String id, String id_acquirente, String id_articolo, String mode_spedizione, LocalDate data_acquisto, LocalDate data_spedizione) {
-        this.id = id;
+    public AcquistoModel(String id_acquirente, String id_articolo, String mode_spedizione, LocalDate data_acquisto, LocalDate data_spedizione) {
         this.id_acquirente = id_acquirente;
         this.id_articolo = id_articolo;
         this.mode_spedizione = mode_spedizione;
@@ -20,11 +20,11 @@ public class AcquistoModel {
         this.data_spedizione = data_spedizione;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
