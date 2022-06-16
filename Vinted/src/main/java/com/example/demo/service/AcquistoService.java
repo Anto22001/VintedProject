@@ -38,13 +38,13 @@ public class AcquistoService {
         }
         return false;
     }
-    public boolean removeAcquisto(String id){
+    public boolean removeAcquisto(String id_articolo){
         for(AcquistoModel ac : acquistoRepo.getAcquisti()){
             for(ArticoloModel a : articoloRepo.getArticoli())
                 if(ac.getId_articolo().equals(a.getId()))
                     a.setIn_vendita(true);
         }
-        return this.acquistoRepo.removeAcquisto(id);
+        return this.acquistoRepo.removeAcquisto(id_articolo);
     }
     public List<AcquistoModel> getAcquisti(){ return this.acquistoRepo.getAcquisti(); }
 

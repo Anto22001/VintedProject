@@ -26,8 +26,8 @@ public class AcquistoController {
     }
 
     @DeleteMapping("/cancellaAcquisto")
-    public ResponseEntity<Void> removeAcquisto(@RequestParam String id){
-        boolean rimosso = this.acquistoServ.removeAcquisto(id);
+    public ResponseEntity<Void> removeAcquisto(@RequestParam String id_articolo){
+        boolean rimosso = this.acquistoServ.removeAcquisto(id_articolo);
         return rimosso ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 

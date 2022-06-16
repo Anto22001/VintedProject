@@ -32,8 +32,28 @@ public class AcquistoRepositoryTest {
     }
 
     @Test
-    public void testGetAcquisti(){
-        //qua potrei fare un insert
+    public void testRemoveAcquisti(){
+        this.acquistoRepo.removeAcquisto("1001");
         this.acquistoRepo.getAcquisti();
+    }
+
+    @Test
+    public void testGetAcquisti(){
+        this.db_vinted.update("insert into vinted.acquisto(id_acquirente,id_articolo,data_acquisto,modalita_spedizione,data_spedizione) values ('0002','1001',?,'cade dal cielo','2022-06-17');"
+                ,LocalDate.now());
+        this.acquistoRepo.getAcquisti();
+    }
+
+    @Test
+     public void testGetAcquistiUtente(){
+        this.db_vinted.update("insert into vinted.acquisto(id_acquirente,id_articolo,data_acquisto,modalita_spedizione,data_spedizione) values ('0002','1001',?,'cade dal cielo','2022-06-17');"
+                ,LocalDate.now());
+        this.acquistoRepo.getAcquistiUtente("0002");
+    }
+
+    @Test
+    public void testGetAcquistiRangeTempo(){
+        this.db_vinted.update("insert into vinted.acquisto(id_acquirente,id_articolo,data_acquisto,modalita_spedizione,data_spedizione) values ('0002','1001','2021-06-16','cade dal cielo','2022-06-17');");
+        this.acquistoRepo.getAcquistiRangeTempo(12);
     }
 }

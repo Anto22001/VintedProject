@@ -19,8 +19,8 @@ public class AcquistoRepository {
         return rowAffected>0;
     }
 
-    public boolean removeAcquisto(String id){
-        int rowAffected = db_vinted.update("delete from vinted.acquisto where id=?",id);
+    public boolean removeAcquisto(String id_articolo){
+        int rowAffected = db_vinted.update("delete from vinted.acquisto where id_articolo=?",id_articolo);
         return rowAffected>0;
     }
 
@@ -38,7 +38,7 @@ public class AcquistoRepository {
     }
 
     public List<AcquistoModel> getAcquistiUtente(String id_utente){
-        return this.db_vinted.query("select * from acquisto where id=? ORDER BY data_acquisto;",
+        return this.db_vinted.query("select * from vinted.acquisto where id_acquirente=? ORDER BY data_acquisto;",
                 (rs, rowNum) ->
                         new AcquistoModel(
                                 rs.getString("id_acquirente"),
@@ -51,7 +51,7 @@ public class AcquistoRepository {
     }
 
     public List<AcquistoModel> getAcquistiRangeTempo(int range){
-        return this.db_vinted.query("SELECT * FROM vinted.acquisto WHERE data_acquisto >=date_trunc('day', NOW() - ?::interval) AND data_acquisto <= now();",
+        return this.db_vinted.query("SELECT * FROM vinted.acquisto WHERE data_acquisto >=date_trunc('day', NOW() - ?::interval) AND data_acquisto <= now() ORDER BY data_acquisto;",
                 (rs, rowNum) ->
                         new AcquistoModel(
                                 rs.getString("id_acquirente"),
