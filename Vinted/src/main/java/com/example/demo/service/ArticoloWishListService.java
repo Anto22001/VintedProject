@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.model.ArticoloModel;
-import com.example.demo.repository.ArticoloRepository;
 import com.example.demo.repository.ArticoloWishListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,19 +8,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArticoloWishListService {
     ArticoloWishListRepository artWishRepo;
-    ArticoloRepository articoloRepo;
 
     @Autowired
-    public ArticoloWishListService(ArticoloWishListRepository artWishRepo, ArticoloRepository articoloRepo) {
+    public ArticoloWishListService(ArticoloWishListRepository artWishRepo) {
         this.artWishRepo = artWishRepo;
-        this.articoloRepo = articoloRepo;
     }
 
     public boolean associateArticoloWishlist(String id_articolo, String id_wishlist){
-        for(ArticoloModel a : this.articoloRepo.getArticoli())
-            if(a.getId().equals(id_articolo) && a.isIn_vendita())
-                return this.artWishRepo.associateArticoloWishlist(id_articolo, id_wishlist);
-        return false;
+        return this.artWishRepo.associateArticoloWishlist(id_articolo, id_wishlist);
     }
 
     public boolean removeArticoloWishlist(String id_articolo, String id_wishlist){

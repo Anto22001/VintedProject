@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class ArticoloWishListRepository {
     @Autowired
@@ -30,5 +32,13 @@ public class ArticoloWishListRepository {
 
     public void removeArticoloFromEveryWishlists(ArticoloModel a){
        db_vinted.update("delete from vinted.articolo_wishlist where id_articolo=?", a.getId());
+    }
+
+    public List<String> getArticoliWishlist(String idWishlist) {
+        return db_vinted.query("select id_articolo from vinted.articolo_wishlist where id_wishlist =?",
+                (rs, rowNum) ->
+                        rs.getString("id_articolo")
+                ,idWishlist
+        );
     }
 }
