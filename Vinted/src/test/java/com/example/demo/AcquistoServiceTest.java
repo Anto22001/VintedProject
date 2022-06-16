@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootTest
 public class AcquistoServiceTest {
@@ -50,6 +51,18 @@ public class AcquistoServiceTest {
                 ,LocalDate.now());
         this.acquistoServ.getAcquisti();
     }
+
+    @Test
+    public void testgetAcquistiUtente(){
+        this.acquistoServ.getAcquistiUtente("0002");
+    }
+
+    @Test
+    public void testgetAcquistiRangeTempo(){
+        this.acquistoServ.getAcquistiRangeTempo(6);
+    }
+
+
 
 
 
