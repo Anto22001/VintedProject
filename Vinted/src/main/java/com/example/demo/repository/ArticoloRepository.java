@@ -47,7 +47,7 @@ public class ArticoloRepository {
     }
 
     public List<ArticoloModel> getArticoliUtente(String id_utente){
-        return this.db_vinted.query("select * from articolo where id_venditore=? and in_vendita=true ORDER BY data_pubblicazione",
+        return this.db_vinted.query("select * from vinted.articolo where id_venditore=? and in_vendita=true ORDER BY data_pubblicazione",
                 (rs, rowNum) ->
                         new ArticoloModel(
                                 rs.getString("id"),

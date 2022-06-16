@@ -53,8 +53,30 @@ public class ArticoloRepositoryTest {
                 ));
     }
 
+    @Test
+    public void testUpdateArticolo(){
+        LocalDate ld = LocalDate.parse("2022-06-16");
+        ArticoloModel art = new ArticoloModel("0005","Jeans Blu","Jeans belli","0002","Ottime",ld,"Catania",5.5,true);
+        this.articoloRepo.updateArticolo(art);
+    }
 
+    @Test
+    public void testGetArticoli(){
+        this.articoloRepo.getArticoli();
+    }
+    @Test
+    public void testGetArticoliUtente(){
+        this.articoloRepo.getArticoliUtente("0002");
+    }
+    @Test
+    public void testGetGuadagno(){
+        this.articoloRepo.getGuadagno("0001");
+    }
 
+    @Test
+    public void testArticoliVenduti(){
+        this.articoloRepo.articoliVenduti("0002");
+    }
 
 
 }
